@@ -30,17 +30,10 @@ void Graph::APUtil(int u, bool visited[], int disc[], int low[], int parent[], b
 {
 
     static int time = 0;
-
-
     int children = 0;
-
-
     visited[u] = true;
-
-
     disc[u] = low[u] = ++time;
-
-
+  
     list<int>::iterator i;
     for (i = adj[u].begin(); i != adj[u].end(); ++i)
     {
@@ -52,14 +45,11 @@ void Graph::APUtil(int u, bool visited[], int disc[], int low[], int parent[], b
             parent[v] = u;
             APUtil(v, visited, disc, low, parent, ap);
 
-
             low[u]  = min(low[u], low[v]);
-
-
+            
             if (parent[u] == NIL && children > 1)
                ap[u] = true;
-
-
+   
             if (parent[u] != NIL && low[v] >= disc[u])
                ap[u] = true;
         }
